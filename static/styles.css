@@ -1,0 +1,110 @@
+h1 {
+    color: aliceblue;
+}
+
+.nav-link {
+    color: aliceblue;
+}
+
+.nav-link:hover {
+    color: rgb(96, 224, 250);
+}
+
+#navbarNav {
+    padding: 0 50%;
+}
+
+a {
+    color: rgb(188, 186, 186);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(254, 255, 255);
+    text-decoration: none;
+}
+
+
+.item {
+    color: rgb(7, 7, 7);
+
+}
+
+.item:hover {
+    color:rgb(255, 255, 255);
+}
+
+.pick {
+    background-color: rgb(233, 236, 236);
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 900px 4px 2px;
+    border-radius: 16px;
+    position: relative;
+}
+
+.pick:hover {
+    background-color: rgb(37, 196, 196);
+    border: none;
+    color: aliceblue;
+    padding: 10px 20px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0px 895px 0px -2px;
+    border-radius: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.link {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.done {
+    background-color: rgb(79, 81, 81);
+    border: none;
+    color: rgb(11, 11, 11);
+    padding: 10px 20px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 900px 4px 2px;
+    border-radius: 16px;
+    position: relative;
+}
+
+.done:hover {
+    background-color: rgb(54, 56, 56);
+    border: none;
+    color: rgb(11, 11, 11);
+    padding: 10px 20px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 900px 4px 2px;
+    border-radius: 16px;
+    position: relative;
+}
+
+
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }

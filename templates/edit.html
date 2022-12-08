@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="vh-100 gradient-custom">
+    <h1>Completed task</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Done" action="/update/{{ form.id }}">
+
+    </form>
+</section>
+{% endblock %}

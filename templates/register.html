@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="vh-100 gradient-custom">
+
+    <div class="container py-5 h-100">
+        <a href="{% url 'index' %}" style="text-decoration: none;"> <h1>TODO LIST</h1></a>
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+
+                            <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                            {% for error in form.errors %}
+                            <p class="alert alert-success mt-3">Use a different password</p>
+                            {% endfor %}
+
+                            <form action="{% url 'register' %}" method="post">
+
+                                {% csrf_token %}
+                                <div class="form-outline form-white mb-4">
+                                    {{ form.username }}
+                                    <label class="form-label" for="username">Username</label>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form.email }}
+                                    <label class="form-label" for="typePasswordX">Email</label>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    {{ form.password1 }}
+                                    <label class="form-label" for="typePasswordX">Password</label>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    {{ form.password2 }}
+                                    <label class="form-label" for="typePasswordz">Re-enter Password</label>
+                                </div>
+
+                                <div>
+                                    <p class="mb-0">Already have an account? <a href="{% url 'login' %}"
+                                            class="text-white-50 fw-bold">LOG IN</a>
+                                    </p>
+                                </div>
+                                <br>
+
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
+                            </form>
+
+
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
