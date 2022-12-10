@@ -6,15 +6,20 @@ from .forms import *
 
 # Create your views here.
 
-def index(request):
+def home(request):
+    return render(request, "home.html")
+
+def getitems(request):
     form = ItemForm()
     if request.method == "POST":
         form = ItemForm(request.POST)
         if form.is_valid():
-            form.save()
+            todo_item = form.save(commit=False)
+            todo_item.user = request.user
+            todo_item.save()
             messages.success(request, "ITEM ADDED SUCCESSFULLY")
         return redirect("index")
-    todo = Item.objects.all()
+    todo = Item.objects.filter(user=request.user)
     context = {
         "items": todo,
         "form": form,
@@ -63,7 +68,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect("index")
+    return redirect("home")
 
 
 
@@ -73,7 +78,7 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Rgistered Successfully, Please add new task items")
+            messages.success(request, "Rgistered Successfully, Please add new task items ")
             
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password1"]

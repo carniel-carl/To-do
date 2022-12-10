@@ -6,7 +6,7 @@
 
   <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid py-2">
-      <a class="navbar-brand px-5" href="#">
+      <a class="navbar-brand px-5" href="{% url 'home' %}">
         <h1>TODO LIST</h1>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -15,7 +15,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          {% if not user.is_authenticated %}
+          {% if not request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link px-4" href="{% url 'register' %}">REGISTER</a>
           </li>
@@ -36,8 +36,15 @@
 
   <div class="container">
 
-    {% if user.is_authenticated %}
-    <h3 class="text-light py-3">Welcome, {{ user }}</h3>
+    {% for message in messages %}
+    <div class="alert alert-success mt-3 d-flex justify-content-between">
+      <span >{{ message }} </span> <a href="" class="text-dark">X</a>
+    </div>
+    
+    {% endfor %}
+
+    {% if request.user.is_authenticated %}
+    <h3 class="text-light py-3">{{ request.user }}'s Items</h3>
     {% else %}
     <h3 class="text-light py-3 px-6">Welcome <br><i><small>Create a To Do List to manage your task.</small></i></h3>
     {% endif %}
@@ -49,11 +56,8 @@
       <input type="submit" value="Add">
     </form>
 
-    {% for message in messages %}
-    <p class="alert alert-success mt-3">{{ message }}</p>
-    {% endfor %}
 
-
+    {% if items %}
     {% for item in items %}
 
     {% if item.complete %}
@@ -81,6 +85,10 @@
     {% endif %}
 
     {% endfor %}
+    {% else %}
+    <p class="text-white">No item in your todo</p>
+    {% endif %}
+  
   </div>
 
 </section>

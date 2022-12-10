@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="vh-100 gradient-custom">
+
+  <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid py-2">
+      <a class="navbar-brand px-5" href="#">
+        <h1>TODO LIST</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% if not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link px-4" href="{% url 'register' %}">REGISTER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" href="{% url 'login' %}">LOGIN</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link px-4" href="{% url 'logout' %}">LOGOUT</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <hr class="text-light">
+
+  <div class="container">
+
+  
+    {% if request.user.is_authenticated %}
+    <h3 class="text-light py-3 px-6">Welcome, {{ request.user }}</h3>
+
+    <form action="{% url 'index' %}">
+        <button type="submit" class="btn btn-lg btn-light px-3 py-3">SEE MY LIST</button>
+    </form>
+
+    {% else %}
+    <h3 class="text-light py-3 px-6">Welcome <br><i><small>Create a To Do List to manage your task.</small></i></h3>
+    {% endif %}
+  </div>
+
+</section>
+{% endblock %}
